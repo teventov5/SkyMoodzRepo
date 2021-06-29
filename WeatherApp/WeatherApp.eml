@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component LANGUAGE_LEVEL="JDK_1_8" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+	</contentEntry>
+	<lib name="mysql-connector-java-8.0.18.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/mysql-connector-java-8.0.18.jar!/"/>
+	</lib>
+	<levels>
+		<level name="Maven: org.apache.httpcomponents:httpclient:4.5.12" value="project"/>
+		<level name="Maven: org.apache.httpcomponents:httpcore:4.4.13" value="project"/>
+		<level name="Maven: commons-logging:commons-logging:1.2" value="project"/>
+		<level name="Maven: commons-codec:commons-codec:1.11" value="project"/>
+	</levels>
+</component>
