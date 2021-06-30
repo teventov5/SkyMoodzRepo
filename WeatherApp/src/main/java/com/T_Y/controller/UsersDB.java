@@ -98,66 +98,35 @@ public class UsersDB {
     }
 
     public String[] showUserDbFavorites(User tempUser) throws ClassNotFoundException, SQLException, IOException {
-//        Socket clientSocket=new Socket("192.168.1.50",8010);
-//        System.out.println("New operational socket was created");
-//        ObjectOutputStream toServer=new ObjectOutputStream(clientSocket.getOutputStream());
-//
-//        ObjectInputStream fromServer=new ObjectInputStream(clientSocket.getInputStream());
-//
-//        toServer.writeObject("Show_User_Favorites");
-//        toServer.writeObject(tempUser);
 
         ToServerObject object=new ToServerObject("Show_User_Favorites",tempUser);
         response=  new TcpClient().sendToServerSql(object);
 
 
-//        String [] recFavArr=(String[])fromServer.readObject();
         String [] recFavArr=(String[]) response.getResponseObject();
 
-        //close the socket
-//        toServer.writeObject("stop");
-//        clientSocket.getInputStream().close();
-//        clientSocket.close();
-//        System.out.println("Operational socket is closed");
+
         return recFavArr;
 
     }
 
     public boolean editUserDbFavorites(User tempUser, char index, City tempCT) throws ClassNotFoundException, SQLException, ArithmeticException, IOException {
-//        Socket clientSocket=new Socket("192.168.1.50",8010);
-//        System.out.println("New operational socket was created");
-//        ObjectOutputStream toServer=new ObjectOutputStream(clientSocket.getOutputStream());
-//
-//        ObjectInputStream fromServer=new ObjectInputStream(clientSocket.getInputStream());
-//
-//        toServer.writeObject("Edit_User_Favorites");
-//        toServer.writeObject(tempUser);
-//        toServer.writeObject(index);
-//        toServer.writeObject(tempCT.getCityName());
+
         ToServerObject object=new ToServerObject("Edit_User_Favorites",tempUser,index,tempCT.getCityName());
         response=  new TcpClient().sendToServerSql(object);
         if (response.getServerResponse().equals("Favorites update succeeded")){
 
-//        if(fromServer.readObject().toString().equals("Favorites update succeeded")) {
             JOptionPane.showMessageDialog(errorMessage, "Favorites update succeeded", "Dialog", JOptionPane.INFORMATION_MESSAGE);
-            //close the socket
-//            toServer.writeObject("stop");
-//            clientSocket.getInputStream().close();
-//            clientSocket.close();
-//            System.out.println("Operational socket is closed");
             return true;
         }
         else {
             JOptionPane.showMessageDialog(errorMessage, "Favorites update failed", "Dialog", JOptionPane.ERROR_MESSAGE);
-            //close the socket
-//            toServer.writeObject("stop");
-//            clientSocket.getInputStream().close();
-//            clientSocket.close();
-//            System.out.println("Operational socket is closed");
         }
         return false;
 
     }
+
+    //TODO stil have to fix secret info on both client side and server side
 
     public User getUserSecretInfo(User tempUser) throws ClassNotFoundException, SQLException, ArithmeticException, IOException {
 
@@ -181,8 +150,6 @@ public class UsersDB {
     }
 
     public boolean usernameSearch(User tempUser) throws ClassNotFoundException, SQLException, ArithmeticException, IOException {
-//        String response= (String) new TcpClient().sendToServer("Search_User",tempUser);
-
         ToServerObject object=new ToServerObject("Search_User",tempUser);
         response=  new TcpClient().sendToServerSql(object);
         if (response.getServerResponse().equals("User found"))
@@ -194,38 +161,15 @@ public class UsersDB {
 
     public boolean updateUserPasswordToDB(User tempUser, String password) throws ClassNotFoundException, SQLException, IOException {
 
-//
-//        Socket clientSocket = new Socket("192.168.1.50", 8010);
-//        System.out.println("New operational socket was created");
-//        ObjectOutputStream toServer = new ObjectOutputStream(clientSocket.getOutputStream());
-//
-//        ObjectInputStream fromServer = new ObjectInputStream(clientSocket.getInputStream());
-//
-//        toServer.writeObject("Update_Password");
-//
-//        toServer.writeObject(tempUser);
-//        toServer.writeObject(password);
-
         ToServerObject object=new ToServerObject("Update_Password",tempUser,password);
         response=  new TcpClient().sendToServerSql(object);
 
 
-//        if (fromServer.readObject().toString().equals("Password was updated successfully")) {
         if (response.getServerResponse().equals("Password was updated successfully"))
         {
-            //close the socket
-//            toServer.writeObject("stop");
-//            clientSocket.getInputStream().close();
-//            clientSocket.close();
-//            System.out.println("Operational socket is closed");
             return true;
         }
         else {
-            //close the socket
-//            toServer.writeObject("stop");
-//            clientSocket.getInputStream().close();
-//            clientSocket.close();
-//            System.out.println("Operational socket is closed");
             return false;
         }
     }

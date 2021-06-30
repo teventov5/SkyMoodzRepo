@@ -87,7 +87,7 @@ public class UserCustomizedScreen extends JFrame {
             final String[] values;
 
             {
-                values = tempUser.getFavoritesArr();//gets the favorites of the user
+                values = tempUser.getFavoritesArr();//gets the favorites of the user.
             }
 
             public int getSize() {

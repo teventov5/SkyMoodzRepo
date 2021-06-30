@@ -14,7 +14,6 @@ public class TcpClient {
         ObjectOutputStream toServer = new ObjectOutputStream(clientSocket.getOutputStream());
         ObjectInputStream fromServer = new ObjectInputStream(clientSocket.getInputStream());
         toServer.writeObject(obj);
-//        String response=fromServer.readObject().toString();
         ToServerObject response=(ToServerObject) fromServer.readObject();
         ToServerObject stop=new ToServerObject("stop");
         toServer.writeObject(stop);

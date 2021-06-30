@@ -125,11 +125,9 @@ public class FavoriteCitySearch extends JDialog {
                 try {
                     lblSuccessFlag.setForeground(Color.red);
                     lblSuccessFlag.setText("city not found");
-                    //cityTextInput.setText(cityTextInput.getText().replace(" ","%20"));
                     tempCT = new City(cityTextInput.getText(), "0000");
 
 
-//                    new FavoriteCityCodeSearch(tempCT);
                     City cityUpdated=new CitySearch().FavoriteCityCodeSearch(tempCT);
                         if (cityUpdated!=null)
                             {

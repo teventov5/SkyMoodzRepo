@@ -185,7 +185,7 @@ public class DBTablePrinter {
                     rs.close();
                 }
             } catch (SQLException ignore) {
-                // ignore
+                ignore.printStackTrace();
             }
         }
     }

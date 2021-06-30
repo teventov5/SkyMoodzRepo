@@ -54,9 +54,7 @@ public class AdminCustomizedScreen extends JFrame {
                 lblTime.setText(rightNow.getTime().toString());
 
                 index = favoritesList.getAnchorSelectionIndex();
-                //String [] resultArr={"31/05/2020","rainy","29","13"};
-                //forcastResult result=new forcastResult(resultArr);
-
+// This is were we start the city search.
                 result = new CitySearch().searchForCityResult(favoritesList.getModel().getElementAt(index).toString());
                 lblHeadlineText.setText(result.getHeadline());
                 lblCurrTemperatureText.setText(result.getTemperature());

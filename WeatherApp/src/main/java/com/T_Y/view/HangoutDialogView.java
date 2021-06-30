@@ -37,9 +37,6 @@ public class HangoutDialogView extends JDialog {
         hangoutList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 int index = hangoutList.getAnchorSelectionIndex();
-                //String [] resultArr={"31/05/2020","rainy","29","13"};
-                //forcastResult result=new forcastResult(resultArr);
-                //result =new citySearch().searchForCityResult( hangoutList.getModel().getElementAt(index).toString());
                 specificHangout = allHangouts[index];
                 lblHeadlineText.setText(specificHangout.getHeadline());
                 lblRatingText.setText(specificHangout.getRating());

@@ -21,10 +21,8 @@ public class LookAndFeel {
             }
         }
 
-        // Override info because tooltip uses "info" background instead of tooltip.background.. WTF dude?
         put("info", get("ToolTip.background"));
         put("ToolTip.font", new Font("Arial", Font.PLAIN, 14));
-        // See all options here: https://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/_nimbusDefaults.html
     }
 
 
