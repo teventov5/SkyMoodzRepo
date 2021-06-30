@@ -1,7 +1,6 @@
 package com.T_Y.controller;
 
 import com.T_Y.model.User;
-import com.T_Y.model.UsersDB;
 import com.T_Y.view.*;
 
 import javax.swing.*;

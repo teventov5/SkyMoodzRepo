@@ -2,13 +2,20 @@ package com.T_Y.controller;
 
 import com.T_Y.model.*;
 
+
 import javax.swing.*;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class CitySearch {
     private JFrame errorMessage;
+    private ToServerObject response;
+
 
     public CitySearch() {
     }
@@ -21,25 +28,14 @@ public class CitySearch {
                     return null;
                 }
 
-
-//now we will send the city to the server so it will send api request
-
-                Socket clientSocket = new Socket("192.168.1.50", 8011);
-                System.out.println("New operational socket was created");
-                ObjectOutputStream toServer = new ObjectOutputStream(clientSocket.getOutputStream());
-
-                ObjectInputStream fromServer = new ObjectInputStream(clientSocket.getInputStream());
-
-                toServer.writeObject("Get_Forecast");
-
-                toServer.writeObject(ct);
+                ToServerObject object=new ToServerObject("Get_Forecast",ct);
+                response=  new TcpClient().sendToServerApi(object);
                 City cityUpdated=new City();
-                if (fromServer.readObject().toString().equals("Forecast result updated")) {
-                    cityUpdated=(City) fromServer.readObject();
-                    toServer.writeObject("stop");
+                if (response.getServerResponse().equals("Forecast result updated")) {
+                    cityUpdated=(City)response.getResponseObject();
+
                     return cityUpdated.getResult();
                 } else {
-                    toServer.writeObject("stop");
                     return null;
                 }
 
@@ -48,10 +44,27 @@ public class CitySearch {
                 JOptionPane.showMessageDialog(errorMessage, "The allowed number of Api requests has been exceeded", "Dialog", JOptionPane.ERROR_MESSAGE);
                 else
                     JOptionPane.showMessageDialog(errorMessage, "There is a problem getting weather data for the specified city", "Dialog", JOptionPane.ERROR_MESSAGE);
-
             }
         return null;
     }
+
+    public City FavoriteCityCodeSearch(City ct) throws IOException, ClassNotFoundException {
+
+
+        ToServerObject object=new ToServerObject("Get_City_Code",ct);
+        response=  new TcpClient().sendToServerApi(object);
+        City cityUpdated=new City();
+        if (response.getServerResponse().equals("City code updated")) {
+            cityUpdated=(City) response.getResponseObject();
+            return cityUpdated;
+        } else {
+            return null;
+        }
+
+    }
+
+
+
 
 
 }

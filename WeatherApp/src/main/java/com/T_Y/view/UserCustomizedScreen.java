@@ -46,34 +46,41 @@ public class UserCustomizedScreen extends JFrame {
 
         JList favoritesList = new JList();
         favoritesList.addListSelectionListener(new ListSelectionListener() {
+
             public void valueChanged(ListSelectionEvent e) {
-                image = null;
-                icon = null;
-                lblIcon.setIcon(null);
-                rightNow.setTime(Calendar.getInstance().getTime());
-                lblTime.setText(rightNow.getTime().toString());
 
-                index = favoritesList.getAnchorSelectionIndex();
-                //String [] resultArr={"31/05/2020","rainy","29","13"};
-                //forcastResult result=new forcastResult(resultArr);
+                if (!e.getValueIsAdjusting()) {
+                    image = null;
+                    icon = null;
+                    lblIcon.setIcon(null);
+                    rightNow.setTime(Calendar.getInstance().getTime());
+                    lblTime.setText(rightNow.getTime().toString());
 
-                result = new CitySearch().searchForCityResult(favoritesList.getModel().getElementAt(index).toString());
-               try {
-                   if (result == null) throw new ArithmeticException("Could not find results for the city requested");
+                    index = favoritesList.getAnchorSelectionIndex();
 
-                lblHeadlineText.setText(result.getHeadline() + " Weather");
-                lblCurrTemperatureText.setText(result.getTemperature() + "°");
-                    image = ImageIO.read(new File("images\\" + result.getIconNumber() + ".png"));
-                    icon = new ImageIcon(image);
-                    lblIcon.setIcon(icon);
-                    lblIcon.setBounds(270, 137, 100, 86);
-                    contentPane.add(lblIcon);
-                } catch (IOException ioException) {
-                   ioException.printStackTrace();
-               }
-               catch (ArithmeticException arException) {
-                   arException.printStackTrace();
-               }
+                    result = new CitySearch().searchForCityResult(favoritesList.getModel().getElementAt(index).toString());
+                    try {
+                        if (result == null) throw new ArithmeticException("Could not find results for the city requested\n API Key might be Overused");
+
+                        lblHeadlineText.setText(result.getHeadline() + " Weather");
+                        lblCurrTemperatureText.setText(result.getTemperature() + "°");
+                        image = ImageIO.read(new File("images\\" + result.getIconNumber() + ".png"));
+                        icon = new ImageIcon(image);
+                        lblIcon.setIcon(icon);
+                        lblIcon.setBounds(270, 137, 100, 86);
+                        contentPane.add(lblIcon);
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    catch (ArithmeticException arException) {
+                        JOptionPane.showMessageDialog(null, arException.getMessage(), "Dialog", JOptionPane.ERROR_MESSAGE);
+                        arException.printStackTrace();
+                    }
+
+                }
+
+
+
             }
         });
         favoritesList.setModel(new AbstractListModel() {

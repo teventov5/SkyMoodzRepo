@@ -1,15 +1,12 @@
 package com.T_Y.view;
 
-import com.T_Y.controller.DBTablePrinter;
-import com.T_Y.model.UsersDB;
+import com.T_Y.controller.UsersDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
