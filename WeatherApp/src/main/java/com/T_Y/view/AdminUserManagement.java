@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 public class AdminUserManagement extends JFrame {
@@ -33,11 +34,7 @@ public class AdminUserManagement extends JFrame {
                     JOptionPane.showMessageDialog(new JFrame(), "Users Table available in CLI after pressing OK", "Dialog", JOptionPane.PLAIN_MESSAGE);
                     List<Object[]> records =new UsersDB().showUsersTable();
                     if(records!=null)
-                    {
-                        for(int i=0;i<records.size();i++){
-                            System.out.println(records.get(i));
-                        }
-                    }
+                        records.forEach(y -> System.out.println(Arrays.toString(y) + "\n"));
                     else
                         JOptionPane.showMessageDialog(new JFrame(), "Problem getting users table data from server", "Dialog", JOptionPane.PLAIN_MESSAGE);
 

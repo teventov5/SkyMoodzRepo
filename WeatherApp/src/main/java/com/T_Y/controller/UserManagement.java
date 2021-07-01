@@ -41,21 +41,25 @@ public class UserManagement {
         return value.chars().anyMatch(predicate);
     }
 
-    private void passwordCheck(User tempUser) {
+    private boolean passwordCheck(User tempUser) {
         String tempPassword = tempUser.getPassword();
         if (tempPassword.length() > 8 || tempPassword.length() < 4) {
-            throw new ArithmeticException("Password has to be between 4-8 chars ");
+            JOptionPane.showMessageDialog(null, "Password has to be between 4-8 chars ", "Dialog", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+
         }
-        //checking if the password contains at least one digit and one letter
         if (!isPasswordValid(tempPassword)) {
-            throw new ArithmeticException("Password has to include at least one digit and one letter ");
+            JOptionPane.showMessageDialog(null, "Password has to include at least one digit and one letter ", "Dialog", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
+        return true;
     }
 
     public boolean registerUser(User tempUser) throws SQLException, ClassNotFoundException, IOException {
         try {
-            passwordCheck(tempUser);
+            if(passwordCheck(tempUser))
             System.out.println("user password meets requirements");
+            else return false;
             if (new UsersDB().registerUserToDB(tempUser)) {
                 JOptionPane.showMessageDialog(null, "Registration Succeeded", "Dialog", JOptionPane.INFORMATION_MESSAGE);
                 return true;

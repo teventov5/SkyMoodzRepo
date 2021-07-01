@@ -49,11 +49,9 @@ public class CitySearch {
     }
 
     public City FavoriteCityCodeSearch(City ct) throws IOException, ClassNotFoundException {
-
-
         ToServerObject object=new ToServerObject("Get_City_Code",ct);
         response=  new TcpClient().sendToServerApi(object);
-        City cityUpdated=new City();
+        City cityUpdated;
         if (response.getServerResponse().equals("City code updated")) {
             cityUpdated=(City) response.getResponseObject();
             return cityUpdated;

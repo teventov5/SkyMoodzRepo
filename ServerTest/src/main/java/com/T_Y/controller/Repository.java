@@ -23,8 +23,6 @@ import java.util.Timer;
 
 public class Repository {
 
-
-
     private ForecastResult parseForecastJson(String jsonData) throws JSONException {
         JSONArray jsonArray = new JSONArray(jsonData);
         JSONObject row = jsonArray.getJSONObject(0);
@@ -56,10 +54,8 @@ public class Repository {
             if(!row.isNull("Link"))
                 arrOfHangouts[i].setLink(row.getString("Link"));
         }
-
         return arrOfHangouts;
     }
-
 
     private boolean resultCacheCheck(City ct) {
         if (CityAlgoImpl.getInstance().getForecasts().getElement(ct.getCityCode()) != null) {
@@ -166,7 +162,8 @@ public class Repository {
 
     public boolean cityCodeSearch(City ct) throws UnsupportedEncodingException {
 
-        String url = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + ApiKey.getApiKey();
+        String url = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=" + ApiKey.getApiKey();
+
         CloseableHttpClient client = HttpClients.createDefault();
         CloseableHttpResponse resp = null;
 
