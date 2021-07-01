@@ -1,3 +1,4 @@
+import com.T_Y.model.ToServerObject;
 import com.T_Y.model.User;
 
 import java.io.*;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UrlIhandler   implements Ihandler{
+    private ToServerObject obj;
     @Override
     public void handle(InputStream fromClient, OutputStream toClient) throws IOException, ClassNotFoundException, SQLException {
         ObjectInputStream objectInputStream=new ObjectInputStream(fromClient);
@@ -15,28 +17,31 @@ public class UrlIhandler   implements Ihandler{
         while(isActive)
         {
 
-            switch (objectInputStream.readObject().toString())
+            this.obj=(ToServerObject) objectInputStream.readObject();
+            switch (obj.getCommandToServer())
             {
                 case("Register"): {
                     System.out.println("Server Received a register query from the client");
-                    User tempUser = (User) objectInputStream.readObject();
+                    User tempUser = (User) obj.getObj1();
+
                     try {
                         if (new DbAccess().registerUserToDB(tempUser)) {
                             try {
                                 if (new DbAccess().initFavoriteToDB(tempUser)) {
-                                    objectOutputStream.writeObject("Registration succeeded");
-                                    break;
+                                    obj.setServerResponse("Registration succeeded");
                                 }
                                 else
                                 {
-                                    objectOutputStream.writeObject("Registration Failed");
-                                    break;
+                                    obj.setServerResponse("Registration Failed");
                                 }
+                                objectOutputStream.writeObject(obj);
+                                break;
                             } catch (SQLException throwables) {
                                 throwables.printStackTrace();
                             }
                         }
-                        objectOutputStream.writeObject("Username already exist");
+                        obj.setServerResponse("Registration Failed");
+                        objectOutputStream.writeObject(obj);
                         break;
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
@@ -45,15 +50,17 @@ public class UrlIhandler   implements Ihandler{
 
                 case("User_Login"):{
                     System.out.println("Server Received a Login query from the client");
-                    User tempUser= (User) objectInputStream.readObject();
+                    User tempUser = (User) obj.getObj1();
+
                     try {
                         if(new DbAccess().loginUserToDB(tempUser)) {
-                            objectOutputStream.writeObject("Login succeeded");
+                            obj.setServerResponse("Login succeeded");
                         }
                         else
                         {
-                            objectOutputStream.writeObject("Login Failed");
+                            obj.setServerResponse("Login Failed");
                         }
+                        objectOutputStream.writeObject(obj);
                         break;
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
@@ -62,15 +69,19 @@ public class UrlIhandler   implements Ihandler{
 
                 case("Admin_Login"):{
                     System.out.println("Server Received an Admin Login query from the client");
-                    User tempUser= (User) objectInputStream.readObject();
+                    User tempUser = (User) obj.getObj1();
+
                     try {
                         if(new DbAccess().loginAdminToDB(tempUser)) {
-                            objectOutputStream.writeObject("Login succeeded");
+                            obj.setServerResponse("Login succeeded");
                         }
                         else
                         {
-                            objectOutputStream.writeObject("Login Failed");
+                            obj.setServerResponse("Login Failed");
+
                         }
+                        objectOutputStream.writeObject(obj);
+
                         break;
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
@@ -79,9 +90,11 @@ public class UrlIhandler   implements Ihandler{
 
                 case("Show_User_Favorites"): {
                     System.out.println("Server Received a favorites query from the client");
-                    User tempUser = (User) objectInputStream.readObject();
+                    User tempUser = (User) obj.getObj1();
+
                     try {
-                        objectOutputStream.writeObject(new DbAccess().getFavoritesArr(tempUser));
+                        obj.setResponseObject(new DbAccess().getFavoritesArr(tempUser));
+                        objectOutputStream.writeObject(obj);
                         break;
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
@@ -90,28 +103,34 @@ public class UrlIhandler   implements Ihandler{
 
                 case("Edit_User_Favorites"): {
                     System.out.println("Server Received a request to change favorites from the client");
-                    User tempUser = (User) objectInputStream.readObject();
-                    char index = (char) objectInputStream.readObject();
-                    String newCity = (String) objectInputStream.readObject();
+                    User tempUser = (User) obj.getObj1();
+                    char index =(char)obj.getObj2();
+                    String newCity=(String)obj.getObj3();
+
+
                     if(new DbAccess().editUserDbFavorites(tempUser,index,newCity))
-                        objectOutputStream.writeObject("Favorites update succeeded");
+                        obj.setServerResponse("Favorites update succeeded");
                     else
-                        objectOutputStream.writeObject("Problem updating the city");
+                        obj.setServerResponse("Problem updating the city");
+                    objectOutputStream.writeObject(obj);
+
+
 
 
                 }
 
                 case("Delete_User"):{
                     System.out.println("Server Received a delete request of a user from the client");
-                    User tempUser= (User) objectInputStream.readObject();
+                    User tempUser = (User) obj.getObj1();
                     try {
                         if(new DbAccess().deleteUserFromDB(tempUser)) {
-                            objectOutputStream.writeObject("Deletion succeeded");
+                            obj.setServerResponse("Deletion succeeded");
                         }
                         else
                         {
-                            objectOutputStream.writeObject("Deletion Failed");
+                            obj.setServerResponse("Deletion Failed");
                         }
+                        objectOutputStream.writeObject(obj);
                         break;
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
@@ -120,21 +139,23 @@ public class UrlIhandler   implements Ihandler{
 
                 case("Search_User"):{
                     System.out.println("Server Received a search request of a specific user");
-                    User tempUser= (User) objectInputStream.readObject();
+                    User tempUser = (User) obj.getObj1();
+
                     try {
                         if(new DbAccess().usernameSearch(tempUser)) {
-                            objectOutputStream.writeObject("User found");
+                            obj.setServerResponse("User found");
                         }
                         else
                         {
-                            objectOutputStream.writeObject("No such user");
+                            obj.setServerResponse("No such user");
                         }
+                        objectOutputStream.writeObject(obj);
                         break;
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
                 }
-
+//TODO change Get secret info case into ToServerObject on both client side and server side
                 case("Get_Secret_info"):{
                     System.out.println("Server Received a secret info request from the client");
                     User tempUser= (User) objectInputStream.readObject();
@@ -158,21 +179,24 @@ public class UrlIhandler   implements Ihandler{
 
                 case("Update_Password"):{
                     System.out.println("Server Received an update password request from the client");
-                    User tempUser= (User) objectInputStream.readObject();
-                    String password=(String) objectInputStream.readObject();
+                    User tempUser = (User) obj.getObj1();
+                    String password=(String)obj.getObj2();
                     try {
                         if(new DbAccess().updateUserPasswordToDB(tempUser,password)) {
-                            objectOutputStream.writeObject("Password was updated successfully");
+                            obj.setServerResponse("Password was updated successfully");
                         }
                         else
                         {
-                            objectOutputStream.writeObject("Password update failed");
+                            obj.setServerResponse("Password update failed");
+
                         }
+                        objectOutputStream.writeObject(obj);
                         break;
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
                 }
+//TODO change Show_Users_Table case into ToServerObject on both client side and server side
 
                 case("Show_Users_Table"):{
                     System.out.println("Server Received a show users table request from the client");

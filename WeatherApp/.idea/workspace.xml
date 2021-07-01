@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01fcdd18-0afc-4dbf-9578-1abdf3f8e0c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/DBTablePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/DBTablePrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/FavoriteCityCodeSearch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/FavoriteCitySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/FavoriteCitySearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/TcpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/TcpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UsersDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UsersDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/model/ForecastResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/model/ForecastResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/view/AdminCustomizedScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/view/AdminCustomizedScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/view/DeleteUserFromDbView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/view/DeleteUserFromDbView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/view/HangoutDialogView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/view/HangoutDialogView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/view/LookAndFeel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/view/LookAndFeel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/view/UserCustomizedScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/view/UserCustomizedScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/view/WelcomeWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/view/WelcomeWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,22 +129,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1620140412003" />
-    <state width="1237" height="198" key="GridCell.Tab.0.bottom" timestamp="1625088305840">
+    <state width="1237" height="170" key="GridCell.Tab.0.bottom" timestamp="1625089714122">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1625088305840" />
-    <state width="1237" height="198" key="GridCell.Tab.0.center" timestamp="1625088305840">
+    <state width="1237" height="170" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1625089714122" />
+    <state width="1237" height="170" key="GridCell.Tab.0.center" timestamp="1625089714122">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1625088305840" />
-    <state width="1237" height="198" key="GridCell.Tab.0.left" timestamp="1625088305840">
+    <state width="1237" height="170" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1625089714122" />
+    <state width="1237" height="170" key="GridCell.Tab.0.left" timestamp="1625089714122">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1625088305840" />
-    <state width="1237" height="198" key="GridCell.Tab.0.right" timestamp="1625088305840">
+    <state width="1237" height="170" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1625089714122" />
+    <state width="1237" height="170" key="GridCell.Tab.0.right" timestamp="1625089714122">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1625088305840" />
+    <state width="1237" height="170" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1625089714122" />
     <state width="1237" height="198" key="GridCell.Tab.1.bottom" timestamp="1625088305840">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

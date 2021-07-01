@@ -27,16 +27,13 @@ public class CityAlgoImpl {
         forecastsCache = CacheImpl.createAlgo(CacheImpl.LRU, 5);
         hangoutsCache = CacheImpl.createAlgo(CacheImpl.SECOND_CHANCE, 5);
 
-//        cityCodes = new ConcurrentHashMap<>();
-//        forecasts = new ConcurrentHashMap<>();
-//        hangouts = new ConcurrentHashMap<>();
 
         scheduler = Executors.newSingleThreadScheduledExecutor();
         scheduler.schedule(() -> {
             System.out.println(LocalDateTime.now() +  ": Clearing cache");
             forecastsCache.clear();
             hangoutsCache.clear();
-        }, 2, TimeUnit.MINUTES);
+        }, 30, TimeUnit.MINUTES);
     }
 
     public static CityAlgoImpl getInstance() {

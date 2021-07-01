@@ -1,7 +1,5 @@
 package com.T_Y.view;
 
-import com.T_Y.controller.CityCodeHushMap;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -23,7 +21,7 @@ public class WelcomeWindow {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                CityCodeHushMap.getInstance().stop();
+//                CityCodeHushMap.getInstance().stop();
             }
         });
 

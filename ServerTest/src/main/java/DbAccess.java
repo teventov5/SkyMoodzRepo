@@ -175,7 +175,6 @@ public class DbAccess {
 
     }
 
-
     public boolean updateUserPasswordToDB(User tempUser, String password) throws ClassNotFoundException, SQLException, IOException {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -187,13 +186,11 @@ public class DbAccess {
         if (updateFlag > 0) {
             return true;
         } else {
-//            throw new ArithmeticException("problem updating password for username " + tempUser.getUsername());
             return false;
 
         }
 
     }
-
 
     public List<Object[]> showUsersTable() throws ClassNotFoundException, SQLException, ArithmeticException, IOException {
         Class.forName("com.mysql.cj.jdbc.Driver");

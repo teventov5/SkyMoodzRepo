@@ -19,7 +19,6 @@ public class Client{
         String addressTest="Https://www.google.co.il";
         toServer.writeObject(addressTest);
         toServer.writeObject("stop");
-//        System.out.println(fromServer.readObject());
 
         
 
