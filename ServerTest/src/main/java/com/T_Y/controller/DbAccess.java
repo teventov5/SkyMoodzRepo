@@ -1,46 +1,38 @@
 package com.T_Y.controller;
 
 import com.T_Y.model.User;
+import com.hit.dao.DaoImpl;
+import com.hit.dao.IDao;
+import com.hit.dao.SqlConnector;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DbAccess {
-    public boolean loginUserToDB(User tempUser) throws ClassNotFoundException, SQLException, ArithmeticException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(SqlConnector.getSqlConnectorUrl(), SqlConnector.getSqlConnectorUsername(), SqlConnector.getSqlConnectorPassword());
-        PreparedStatement sel = conn.prepareStatement("select username from users where username=? AND password=?");
-        ResultSet rs = null;
-        sel.setString(1, tempUser.getUsername());
-        sel.setString(2, tempUser.getPassword());
-        rs = (ResultSet) sel.executeQuery();
-        if (!rs.next()) {
-            return false;
-        } else {
-            return true;
-        }
+    private IDao<User> db;
 
+    public DbAccess() {
+        this.db = DaoImpl.createAccess(DaoImpl.DB, "");
     }
 
-    public boolean loginAdminToDB(User tempUser) throws ClassNotFoundException, SQLException, ArithmeticException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(SqlConnector.getSqlConnectorUrl(), SqlConnector.getSqlConnectorUsername(), SqlConnector.getSqlConnectorPassword());
-        PreparedStatement sel = conn.prepareStatement("select username from admins where username=? AND password=?");
-        ResultSet rs = null;
-        sel.setString(1, tempUser.getUsername());
-        sel.setString(2, tempUser.getPassword());
-        rs = (ResultSet) sel.executeQuery();
-        if (!rs.next()) {
+    public boolean loginUserToDB(User tempUser) throws IOException, ClassNotFoundException {
+        User user = db.read("users." + tempUser.getUsername());
+        if (user == null) {
             return false;
-        } else {
-            return true;
         }
 
+        return user.getPassword().equals(tempUser.getPassword());
+    }
+
+    public boolean loginAdminToDB(User tempUser) throws IOException, ClassNotFoundException {
+        User user = db.read("admins." + tempUser.getUsername());
+        if (user == null) {
+            return false;
+        }
+
+        return user.getPassword().equals(tempUser.getPassword());
     }
 
     public boolean registerUserToDB(User tempUser) throws ClassNotFoundException, SQLException {

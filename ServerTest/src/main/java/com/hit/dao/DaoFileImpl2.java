@@ -6,10 +6,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DaoFileImpl2<V> implements IDao<V>, Serializable {
+    private String baseDir;
 
+    public DaoFileImpl2(String baseDir) {
+        this.baseDir = baseDir;
+
+        // Create root directory and its parent directories
+        if (!new File(baseDir).exists()) {
+            new File(baseDir).mkdirs();
+        }
+    }
 
     public void save(String source, V obj) throws IOException {
-        FileOutputStream f = new FileOutputStream(new File(source));
+        FileOutputStream f = new FileOutputStream(new File(baseDir, source));
         ObjectOutputStream o = new ObjectOutputStream(f);
 
 
@@ -25,7 +34,7 @@ public class DaoFileImpl2<V> implements IDao<V>, Serializable {
 
         V tempObject;
 
-        FileInputStream fi = new FileInputStream(new File(source));
+        FileInputStream fi = new FileInputStream(new File(baseDir, source));
         ObjectInputStream oi = new ObjectInputStream(fi);
 
         tempObject = (V) oi.readObject();
