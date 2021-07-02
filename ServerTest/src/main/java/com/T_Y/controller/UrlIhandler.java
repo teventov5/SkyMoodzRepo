@@ -64,7 +64,7 @@ public class UrlIhandler   implements Ihandler {
                         }
                         objectOutputStream.writeObject(obj);
                         break;
-                    } catch (SQLException throwables) {
+                    } catch (IOException throwables) {
                         throwables.printStackTrace();
                     }
                 }
@@ -85,7 +85,7 @@ public class UrlIhandler   implements Ihandler {
                         objectOutputStream.writeObject(obj);
 
                         break;
-                    } catch (SQLException throwables) {
+                    } catch (IOException throwables) {
                         throwables.printStackTrace();
                     }
                 }

@@ -1,62 +1,55 @@
-//package com.hit.dao;
-//
-//import java.io.*;
-//
-//public class DaoDBImpl<V, K> implements IDao<V, K>, Serializable {
-//
-//    public V getElement(V value, K fileName) {
-//
-//        try {
-//            FileInputStream fi = new FileInputStream(new File((String) fileName));
-//            ObjectInputStream oi = new ObjectInputStream(fi);
-//
-//            // Read object
-//            V obj = (V) oi.readObject();
-//
-//
-//            oi.close();
-//            fi.close();
-//
-//            if(obj==null) {
-//                System.out.println("Error-yakir sharmuta");
-//                return null;
-//            }
-//            else {
-//             System.out.println("Success-Yakir gever");
-//                return (V) obj;
-//            }
-//
-//        } catch (FileNotFoundException e) {
-//            System.out.println("File not found");
-//        } catch (IOException e) {
-//            System.out.println("Error initializing stream");
-//        } catch (ClassNotFoundException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-//    public void putElement(V obj, K fileName)
-//    {
-//
-//        try {
-//            FileOutputStream f = new FileOutputStream(new File((String) fileName));
-//            ObjectOutputStream o = new ObjectOutputStream(f);
-//
-//
-//            // Write objects to file
-//            o.writeObject(obj);
-//            o.close();
-//            System.out.println(f);
-//            f.close();
-//
-//
-//        } catch (FileNotFoundException e) {
-//            System.out.println("File not found");
-//        } catch (IOException e) {
-//            System.out.println("Error initializing stream");
-//        }
-//    }
-//}
-//
-//
+package com.hit.dao;
+
+import com.T_Y.model.User;
+
+import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class DaoDBImpl<V> implements IDao<V> {
+
+    public DaoDBImpl() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void save(String source, V v) throws IOException {
+
+    }
+
+    @Override
+    public V read(String source) throws IOException {
+        V result;
+
+        String[] tableNameAndId = source.split("\\.");
+        String tableName = tableNameAndId[0];
+        String id = tableNameAndId[1];
+
+        try {
+            Connection conn = DriverManager.getConnection(SqlConnector.getSqlConnectorUrl(), SqlConnector.getSqlConnectorUsername(), SqlConnector.getSqlConnectorPassword());
+            PreparedStatement sel = conn.prepareStatement("select * from " + tableName + " where username=?");
+            sel.setString(1, id);
+            ResultSet rs = sel.executeQuery();
+
+            if (rs.next()) {
+                User user = new User(rs.getString("username"),
+                    rs.getString("password"),
+                    rs.getString("secretQuestion"),
+                    rs.getString("secretAnswer"));
+                return (V)user;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            throw new IOException("Failed reading from DB", e);
+        }
+    }
+}
+
+

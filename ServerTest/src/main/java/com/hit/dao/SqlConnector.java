@@ -1,4 +1,4 @@
-package com.T_Y.controller;
+package com.hit.dao;
 
 public class SqlConnector {
 
