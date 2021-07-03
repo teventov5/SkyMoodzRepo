@@ -1,6 +1,6 @@
 package com.T_Y.server;
 
-import com.T_Y.controller.Ihandler;
+import com.T_Y.controller.Iservice;
 
 import javax.imageio.IIOException;
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class TcpServer {
     private final int port;
     private  boolean serverListen;
     private ThreadPoolExecutor threadPool;
-    private Ihandler requestHandler;
+    private Iservice requestHandler;
 
     public TcpServer(int port)
     {
@@ -28,7 +28,7 @@ public class TcpServer {
     }
 
     //listens to incoming connections
-    public void supportClients(Ihandler concurrentHandler)
+    public void supportClients(Iservice concurrentHandler)
     {
         this.requestHandler=concurrentHandler;
 

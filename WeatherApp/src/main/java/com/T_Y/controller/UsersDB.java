@@ -7,9 +7,6 @@ import com.T_Y.model.User;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import java.sql.*;
 import java.util.List;
 
@@ -60,31 +57,15 @@ public class UsersDB {
 
     public List<Object[]> showUsersTable() throws ClassNotFoundException, SQLException, ArithmeticException, IOException {
 
-//        Socket clientSocket = new Socket("192.168.1.50", 8010);
-//        System.out.println("New operational socket was created");
-//        ObjectOutputStream toServer = new ObjectOutputStream(clientSocket.getOutputStream());
-//
-//        ObjectInputStream fromServer = new ObjectInputStream(clientSocket.getInputStream());
-//
-//        toServer.writeObject("Show_Users_Table");
         ToServerObject object=new ToServerObject("Show_Users_Table");
         response=  tcpClient.sendToServerSql(object);
 
-//        if (fromServer.readObject().toString().equals("Users table imported successfully")) {
         if (response.getServerResponse().equals("Users table imported successfully")){
 
-//            List<Object[]> records = (List<Object[]>) fromServer.readObject();
             List<Object[]> records = (List<Object[]>) response.getResponseObject();
-//            toServer.writeObject("stop");
-//            clientSocket.getInputStream().close();
-//            clientSocket.close();
-//            System.out.println("Operational socket is closed");
+
             return records;
         } else {
-//            toServer.writeObject("stop");
-//            clientSocket.getInputStream().close();
-//            clientSocket.close();
-//            System.out.println("Operational socket is closed");
             return null;
         }
     }
@@ -107,9 +88,12 @@ public class UsersDB {
 
         ToServerObject object=new ToServerObject("Show_User_Favorites",tempUser);
         response=  tcpClient.sendToServerSql(object);
-        String [] recFavArr=(String[]) response.getResponseObject();
-        return recFavArr;
-
+        String [] recFavArr;
+        if(response.getServerResponse().equals("Users favorites were successfully imported")) {
+            recFavArr = (String[]) response.getResponseObject();
+            return recFavArr;
+        }
+        return null;
     }
 
     public boolean editUserDbFavorites(User tempUser, char index, City tempCT) throws ClassNotFoundException, SQLException, ArithmeticException, IOException {
@@ -153,4 +137,5 @@ public class UsersDB {
             return false;
         }
     }
+
 }

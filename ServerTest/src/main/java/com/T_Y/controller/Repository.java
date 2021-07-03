@@ -26,7 +26,6 @@ public class Repository {
     private ForecastResult parseForecastJson(String jsonData) throws JSONException {
         JSONArray jsonArray = new JSONArray(jsonData);
         JSONObject row = jsonArray.getJSONObject(0);
-        String LocalObservationDateTime = row.getString("LocalObservationDateTime");
 
         JSONObject temperature = row.getJSONObject("Temperature");
         JSONObject metric = temperature.getJSONObject("Metric");
@@ -42,6 +41,7 @@ public class Repository {
 
     private HangoutsResult[] parseHangoutsJson(String jsonData) throws JSONException {
         HangoutsResult[] arrOfHangouts = new HangoutsResult[43];
+        HangoutsResult[] finalArrOfHangouts = new HangoutsResult[12];
         JSONArray jsonArray = new JSONArray(jsonData);
         for(int i=0;i<43;i++)
         {
@@ -54,7 +54,22 @@ public class Repository {
             if(!row.isNull("Link"))
                 arrOfHangouts[i].setLink(row.getString("Link"));
         }
-        return arrOfHangouts;
+        {
+            finalArrOfHangouts[0] = arrOfHangouts[0];
+            finalArrOfHangouts[1] = arrOfHangouts[2];
+            finalArrOfHangouts[2] = arrOfHangouts[4];
+            finalArrOfHangouts[3] = arrOfHangouts[5];
+            finalArrOfHangouts[4] = arrOfHangouts[6];
+            finalArrOfHangouts[5] = arrOfHangouts[7];
+            finalArrOfHangouts[6] = arrOfHangouts[13];
+            finalArrOfHangouts[7] = arrOfHangouts[9];
+            finalArrOfHangouts[8] = arrOfHangouts[10];
+            finalArrOfHangouts[9] = arrOfHangouts[11];
+            finalArrOfHangouts[10] = arrOfHangouts[12];
+            finalArrOfHangouts[11] = arrOfHangouts[16];
+
+            return finalArrOfHangouts;
+        }
     }
 
     private boolean resultCacheCheck(City ct) {
@@ -65,7 +80,6 @@ public class Repository {
         return false;
     }
 
-
     private boolean hangoutCacheCheck(City ct) {
         if (CityAlgoImpl.getInstance().getHangouts().getElement(ct.getCityCode()) != null) {
             ct.setResult(CityAlgoImpl.getInstance().getForecasts().getElement(ct.getCityCode()));
@@ -75,13 +89,9 @@ public class Repository {
         return false;
     }
 
-
-
     private void updateCityHangoutCache(City ct, HangoutsResult[] resultsArr) {
         CityAlgoImpl.getInstance().getHangouts().putElement(ct.getCityCode(), resultsArr);
     }
-
-
 
     private void updateCityForecastsCache(City ct) {
         CityAlgoImpl.getInstance().getForecasts().putElement(ct.getCityCode(), ct.getResult());
@@ -93,7 +103,6 @@ public class Repository {
         HttpGet get = new HttpGet(url);
         CloseableHttpResponse resp = null;
         if (this.resultCacheCheck(ct)) {
-//            return CityCodeHushMap.getInstance().getForecasts().get(ct.getCityCode());
             return CityAlgoImpl.getInstance().getForecasts().getElement(ct.getCityCode());
 
 
@@ -110,7 +119,7 @@ public class Repository {
 
 
             } catch (Exception e1) {
-                e1.printStackTrace();;
+                e1.printStackTrace();
             }
         } catch (IOException ioe) {
             System.err.println("Something went wrong and we couldn't get the information you requested: ");
@@ -148,7 +157,7 @@ public class Repository {
 
 
             } catch (Exception e1) {
-                e1.printStackTrace();;
+                e1.printStackTrace();
             }
         } catch (IOException ioe) {
             System.err.println("Something went wrong and we couldn't get the information you requested: ");
@@ -198,7 +207,6 @@ public class Repository {
         return false;
     }
 
-
     private boolean checkCityCodeCache(City ct) {
         if (CityAlgoImpl.getInstance().getCityCodes().getElement(ct.getCityName()) != null) {
             ct.setCityCode(CityAlgoImpl.getInstance().getCityCodes().getElement(ct.getCityName()));
@@ -207,13 +215,13 @@ public class Repository {
         return false;
     }
 
-
     private void updateCityCodeCache(City ct) {
         Timer timer = new Timer();
         long timeout = 1000_000;
         CityAlgoImpl.getInstance().getCityCodes().putElement(ct.getCityName(), ct.getCityCode());
 
     }
+
     private void parseCityCode(String jsonData,City ct) {
 
         JSONArray jsonArray = new JSONArray(jsonData);
