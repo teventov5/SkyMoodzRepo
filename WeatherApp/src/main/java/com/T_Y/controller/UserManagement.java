@@ -21,7 +21,7 @@ public class UserManagement {
     }
 
     public boolean isPasswordValid(String value) {
-        return containsNumber(value) && (containsLowerCase(value) || containsUpperCase(value));
+        return (   containsNumber(value) && (containsLowerCase(value) && containsUpperCase(value)) &&  ((value.length()>3)&& value.length()<9) );
 
     }
 
@@ -41,21 +41,25 @@ public class UserManagement {
         return value.chars().anyMatch(predicate);
     }
 
-    private void passwordCheck(User tempUser) {
+    private boolean passwordCheck(User tempUser) {
         String tempPassword = tempUser.getPassword();
         if (tempPassword.length() > 8 || tempPassword.length() < 4) {
-            throw new ArithmeticException("Password has to be between 4-8 chars ");
+            JOptionPane.showMessageDialog(null, "Password has to be between 4-8 chars ", "Dialog", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+
         }
-        //checking if the password contains at least one digit and one letter
         if (!isPasswordValid(tempPassword)) {
-            throw new ArithmeticException("Password has to include at least one digit and one letter ");
+            JOptionPane.showMessageDialog(null, "Password has to include at least one digit and one letter ", "Dialog", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
+        return true;
     }
 
     public boolean registerUser(User tempUser) throws SQLException, ClassNotFoundException, IOException {
         try {
-            passwordCheck(tempUser);
+            if(passwordCheck(tempUser))
             System.out.println("user password meets requirements");
+            else return false;
             if (new UsersDB().registerUserToDB(tempUser)) {
                 JOptionPane.showMessageDialog(null, "Registration Succeeded", "Dialog", JOptionPane.INFORMATION_MESSAGE);
                 return true;
@@ -128,7 +132,7 @@ public class UserManagement {
     public User resetUserPassword(User tempUser) throws SQLException, ClassNotFoundException, IOException {
         try {
             User tempUser2 = new UsersDB().getUserSecretInfo(tempUser);
-            if (tempUser2.getSecretQuestion()!=null) {
+            if (tempUser2!=null) {
                 return tempUser2;
             }
         } catch (Exception e1) {

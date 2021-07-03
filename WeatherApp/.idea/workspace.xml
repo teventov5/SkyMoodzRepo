@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01fcdd18-0afc-4dbf-9578-1abdf3f8e0c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/view/WelcomeWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/view/WelcomeWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/controller/DbAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/controller/DbAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/controller/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/controller/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/controller/UrlIhandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/controller/UrlIhandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/controller/UserManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/controller/UserManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerTest/src/main/java/com/T_Y/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ServerTest/src/main/java/com/hit/dao/DaoDBImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServerTest/src/main/java/com/hit/dao/DaoDBImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/DBTablePrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UserManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UserManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UsersDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UsersDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/view/HangoutDialogView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/view/HangoutDialogView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/controller/DBTablePrinter$Column.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/controller/DBTablePrinter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UserManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UserManagement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UsersDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UsersDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/view/HangoutDialogView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/T_Y/view/HangoutDialogView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/view/HangoutDialogView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/T_Y/view/HangoutDialogView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,42 +145,42 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1620140412003" />
-    <state width="1237" height="170" key="GridCell.Tab.0.bottom" timestamp="1625089714122">
+    <state width="1237" height="170" key="GridCell.Tab.0.bottom" timestamp="1625325290737">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="170" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1625089714122" />
-    <state width="1237" height="170" key="GridCell.Tab.0.center" timestamp="1625089714122">
+    <state width="1237" height="170" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1625325290737" />
+    <state width="1237" height="170" key="GridCell.Tab.0.center" timestamp="1625325290737">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="170" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1625089714122" />
-    <state width="1237" height="170" key="GridCell.Tab.0.left" timestamp="1625089714122">
+    <state width="1237" height="170" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1625325290737" />
+    <state width="1237" height="170" key="GridCell.Tab.0.left" timestamp="1625325290737">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="170" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1625089714122" />
-    <state width="1237" height="170" key="GridCell.Tab.0.right" timestamp="1625089714122">
+    <state width="1237" height="170" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1625325290737" />
+    <state width="1237" height="170" key="GridCell.Tab.0.right" timestamp="1625325290737">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="170" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1625089714122" />
-    <state width="1237" height="198" key="GridCell.Tab.1.bottom" timestamp="1625088305840">
+    <state width="1237" height="170" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1625325290737" />
+    <state width="1237" height="198" key="GridCell.Tab.1.bottom" timestamp="1625322801050">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1625088305840" />
-    <state width="1237" height="198" key="GridCell.Tab.1.center" timestamp="1625088305840">
+    <state width="1237" height="198" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1625322801050" />
+    <state width="1237" height="198" key="GridCell.Tab.1.center" timestamp="1625322801050">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1625088305840" />
-    <state width="1237" height="198" key="GridCell.Tab.1.left" timestamp="1625088305840">
+    <state width="1237" height="198" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1625322801050" />
+    <state width="1237" height="198" key="GridCell.Tab.1.left" timestamp="1625322801050">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1625088305840" />
-    <state width="1237" height="198" key="GridCell.Tab.1.right" timestamp="1625088305840">
+    <state width="1237" height="198" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1625322801050" />
+    <state width="1237" height="198" key="GridCell.Tab.1.right" timestamp="1625322801050">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1625088305840" />
-    <state x="0" y="0" width="575" height="680" key="find.popup" timestamp="1625089292400">
+    <state width="1237" height="198" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1625322801050" />
+    <state x="0" y="0" width="575" height="680" key="find.popup" timestamp="1625157487256">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="0" y="0" width="575" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1625089292400" />
+    <state x="0" y="0" width="575" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1625157487256" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1620144151900">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -180,7 +196,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/T_Y/controller/UserManagement.java</url>
-          <line>87</line>
+          <line>91</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -189,13 +205,8 @@
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/T_Y/controller/UserManagement.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/T_Y/view/AdminUserManagement.java</url>
-          <line>34</line>
+          <line>35</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -214,22 +225,24 @@
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/T_Y/controller/UsersDB.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/T_Y/controller/TcpClient.java</url>
           <line>27</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/T_Y/controller/UsersDB.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/T_Y/controller/UserManagement.java</url>
-          <line>54</line>
-          <properties class="com.T_Y.controller.UserManagement" method="registerUser">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="35" />
+          <line>59</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/T_Y/view/NewPasswordSelectionView.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

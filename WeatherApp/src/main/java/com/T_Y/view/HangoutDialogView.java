@@ -61,8 +61,7 @@ public class HangoutDialogView extends JDialog {
             String[] values;
 
             {
-                values = new String[] { "Flight delays", "Mosquito status", "Dust & Dander status", "Dog Walking Comfort", "Running", "Golf", "Tennis", "Hiking", "Bicycling", "Skateboarding", "Outdoor Concert", "Beach" +
-                        " & Pool" };
+                values = new String[] { "Flight delays", "Running", "Hiking", "Bicycle", "Golf", "Tennis", "Star gazing", "Outdoor concert", "Kite flying", "Beach and pool", "Sailing", "Ski"};
 
             }
 
