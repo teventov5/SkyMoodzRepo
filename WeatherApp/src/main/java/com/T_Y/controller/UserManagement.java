@@ -21,7 +21,7 @@ public class UserManagement {
     }
 
     public boolean isPasswordValid(String value) {
-        return containsNumber(value) && (containsLowerCase(value) || containsUpperCase(value));
+        return (   containsNumber(value) && (containsLowerCase(value) && containsUpperCase(value)) &&  ((value.length()>3)&& value.length()<9) );
 
     }
 
@@ -132,7 +132,7 @@ public class UserManagement {
     public User resetUserPassword(User tempUser) throws SQLException, ClassNotFoundException, IOException {
         try {
             User tempUser2 = new UsersDB().getUserSecretInfo(tempUser);
-            if (tempUser2.getSecretQuestion()!=null) {
+            if (tempUser2!=null) {
                 return tempUser2;
             }
         } catch (Exception e1) {

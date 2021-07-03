@@ -2,9 +2,12 @@ package com.T_Y.model;
 
 
 
+import com.T_Y.controller.DbAccess;
 import com.T_Y.controller.UserManagement;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.sql.SQLException;
 
 
 public class User implements Serializable {
@@ -58,8 +61,8 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public String[] getFavoritesArr() {
-        return (new UserManagement().showFavorites(this));
+    public String[] getFavoritesArr() throws SQLException, IOException, ClassNotFoundException {
+        return this.favoritesArr;
     }
 
     public void setFavoritesArr(String[] favoritesArr) {
