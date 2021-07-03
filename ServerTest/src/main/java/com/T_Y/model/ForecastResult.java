@@ -10,17 +10,7 @@ public class ForecastResult implements Serializable {
     private long time;
     private HangoutsResult[] hangoutsResultsArr = new HangoutsResult[12];
 
-//    public ForcastResult(String[] finalResult) {
-//        this.setDate(finalResult[0]);
-//        this.setHeadline(finalResult[1]);
-//        this.setMinTemperature(finalResult[2]);
-//        this.setIconNumber(finalResult[3]);
-//        this.setTime(Long.parseLong(finalResult[4]));
-//    }
 
-//    public ForcastResult(HangoutsResult[] hangoutArr) {
-//        this.setHangoutsResultsArr(hangoutArr);
-//    }
 
     public ForecastResult(){};
     public HangoutsResult[] getHangoutsResultsArr() {

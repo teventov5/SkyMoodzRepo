@@ -1,7 +1,7 @@
 package com.T_Y.view;
 
 import com.T_Y.model.User;
-import com.T_Y.model.UsersDB;
+import com.T_Y.controller.UsersDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -131,7 +131,6 @@ public class DeleteUserFromDbView extends JDialog {
                             } else {
                                 JOptionPane.showMessageDialog(null, "Username " + tempUser.getUsername() + " does not Exist", "Dialog", JOptionPane.INFORMATION_MESSAGE);
 
-//                                throw new ArithmeticException("Username " + tempUser.getUsername() + "does not Exist");
                             }
                         } catch (Exception el) {
                             el.printStackTrace();

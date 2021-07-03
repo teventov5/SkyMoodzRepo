@@ -4,9 +4,6 @@
 	<contentEntry url="file://$MODULE_DIR$">
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
-	<lib name="mysql-connector-java-8.0.18.jar" scope="COMPILE">
-		<relative-module-cls project-related="jar://$PROJECT_DIR$/mysql-connector-java-8.0.18.jar!/"/>
-	</lib>
 	<levels>
 		<level name="Maven: org.apache.httpcomponents:httpclient:4.5.12" value="project"/>
 		<level name="Maven: org.apache.httpcomponents:httpcore:4.4.13" value="project"/>

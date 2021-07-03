@@ -2,7 +2,7 @@ package com.T_Y.view;
 
 import com.T_Y.controller.UserManagement;
 import com.T_Y.model.User;
-import com.T_Y.model.UsersDB;
+import com.T_Y.controller.UsersDB;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

@@ -16,7 +16,8 @@ public class FavoriteCitySearch extends JDialog {
     private JTextField cityTextInput;
     private City tempCT;
     private JLabel lblSuccessFlag;
-    private boolean successFlag;
+    private boolean DBsuccessFlag;
+    private boolean ctAlreadyExist=false;
 
     /**
      * Launch the application.
@@ -70,21 +71,22 @@ public class FavoriteCitySearch extends JDialog {
                         String[] currFavoriteArr = tempUser.getFavoritesArr();
                         for (int i = 1; i < currFavoriteArr.length; i++) {
                             if (currFavoriteArr[i].equalsIgnoreCase(tempCT.getCityName())) {
-                                throw new ArithmeticException("city already exists for username " + tempUser.getUsername());
+                                JOptionPane.showMessageDialog(null, "city already exists for username " + tempUser.getUsername(), "Dialog", JOptionPane.ERROR_MESSAGE);
+                                ctAlreadyExist=true;
+                                break;
                             }
                         }
+                        if(ctAlreadyExist==false)
                         try {
-                            successFlag = new UsersDB().editUserDbFavorites(tempUser, index, tempCT);
+                            if(new UsersDB().editUserDbFavorites(tempUser, index, tempCT));
+                            JOptionPane.showMessageDialog(new JFrame(), "successful favorite city update", "Dialog", JOptionPane.INFORMATION_MESSAGE);
+
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         } catch (ClassNotFoundException classNotFoundException) {
                             classNotFoundException.printStackTrace();
                         } catch (IOException ioException) {
                             ioException.printStackTrace();
-                        }
-
-                        if (successFlag) {
-                            JOptionPane.showMessageDialog(new JFrame(), "successful favorite city update", "Dialog", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                 });
@@ -123,15 +125,18 @@ public class FavoriteCitySearch extends JDialog {
                 try {
                     lblSuccessFlag.setForeground(Color.red);
                     lblSuccessFlag.setText("city not found");
-                    //cityTextInput.setText(cityTextInput.getText().replace(" ","%20"));
                     tempCT = new City(cityTextInput.getText(), "0000");
-                    new FavoriteCityCodeSearch(tempCT);
-                    if (tempCT.getCityCode() != "0000") {
-                        lblSuccessFlag.setText("city found!");
-                        lblSuccessFlag.setForeground(Color.blue);
-                    } else {
-                        throw new ArithmeticException("bad city input");
-                    }
+
+
+                    City cityUpdated=new CitySearch().FavoriteCityCodeSearch(tempCT);
+                        if (cityUpdated!=null)
+                            {
+                            lblSuccessFlag.setText("city found!");
+                            lblSuccessFlag.setForeground(Color.blue);
+                            }
+                        else
+                            JOptionPane.showMessageDialog(null, "Problem finding your city", "Dialog", JOptionPane.ERROR_MESSAGE);
+
                 } catch (Exception el) {
                     el.printStackTrace();
                 }

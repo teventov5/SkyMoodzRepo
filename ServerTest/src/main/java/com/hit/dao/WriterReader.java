@@ -1,57 +1,27 @@
 //package com.hit.dao;
 //
-//import com.hit.dm.Ingredient;
-//
-//import java.io.File;
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
-//import java.io.FileOutputStream;
+//import com.T_Y.model.User;
 //import java.io.IOException;
-//import java.io.ObjectInputStream;
-//import java.io.ObjectOutputStream;
+//import java.util.ArrayList;
+//import java.util.Arrays;
 //
 //public class WriterReader {
 //
-//    public static void main(String[] args) {
+//    public static void main(String[] args) throws IOException, ClassNotFoundException {
+//        IDao<Object> file;
+//        file = DaoImpl.createAccess(DaoImpl.File);
+//        User tom = new User("Tom", "Aa1234");
+//        User yakir = new User("yakir", "Aa1234");
+//        User haimon = new User("haimon", "Aa1234");
+//        ArrayList<User> temp = new ArrayList<User>();
+//        temp.add(yakir);
+//        temp.add(tom);
+//        temp.add(haimon);
+//        file.save("myObjects4.txt", temp);
 //
-//        Ingredient potato=new Ingredient("potato",1000);
-//        Ingredient gamba=new Ingredient("gamba",2000);
-//
-//        try {
-//            FileOutputStream f = new FileOutputStream(new File("myObjects.txt"));
-//            ObjectOutputStream o = new ObjectOutputStream(f);
-//
-//            // Write objects to file
-//            o.writeObject(potato);
-//            o.writeObject(gamba);
-//
-//            o.close();
-//            f.close();
-///// Done writing into File//////////////
-//
-//
-//            FileInputStream fi = new FileInputStream(new File("myObjects.txt"));
-//            ObjectInputStream oi = new ObjectInputStream(fi);
-//
-//            // Read objects
-//            Ingredient ing1 = (Ingredient) oi.readObject();
-//            Ingredient ing2 = (Ingredient) oi.readObject();
-//
-//            System.out.println(ing1.toString());
-//            System.out.println(ing2.toString());
-//
-//            oi.close();
-//            fi.close();
-//
-//        } catch (FileNotFoundException e) {
-//            System.out.println("File not found");
-//        } catch (IOException e) {
-//            System.out.println("Error initializing stream");
-//        } catch (ClassNotFoundException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
+//        ArrayList tempObject = (ArrayList) file.read("myObjects4.txt");
+////        System.out.println(tempObject);
+//        tempObject.forEach(y -> System.out.println(Arrays.toString(y) + "\n"));
 //
 //    }
-//
 //}
