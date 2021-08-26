@@ -21,7 +21,6 @@ public class WelcomeWindow {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-//                CityCodeHushMap.getInstance().stop();
             }
         });
 
@@ -44,29 +43,8 @@ public class WelcomeWindow {
             }
 
         });
-        btnLogin.setBounds(41, 109, 124, 23);
+        btnLogin.setBounds(20, 109, 138, 23);
         frame.getContentPane().add(btnLogin);
-        JButton btnAdminLogin = new JButton("Admin Login");
-        btnAdminLogin.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                lblInfo.setText(convertToMultiline("Use this button to go to Admin login page"));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                lblInfo.setText("");
-            }
-
-            public void mouseClicked(MouseEvent e1) {
-                new AdminLoginWindow();
-                frame.setVisible(false);
-            }
-
-        });
-
-        btnAdminLogin.setBounds(130, 158, 168, 23);
-        frame.getContentPane().add(btnAdminLogin);
         JButton btnRegister = new JButton("Register");
 
         btnRegister.addMouseListener(new MouseAdapter() {

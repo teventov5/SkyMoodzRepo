@@ -13,8 +13,8 @@ public class LoginWindow extends JFrame {
 
     private static LoginWindow frame;
     private JPanel contentPane;
-    private JTextField usernameField;
-    private JPasswordField passwordField;
+    private JTextField idField;
+    private JPasswordField pwdField;
     private boolean loginSucceed;
 
     /**
@@ -47,11 +47,12 @@ public class LoginWindow extends JFrame {
         JButton button = new JButton("Submit");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String usernameInput, passwordInput;
-                usernameInput = usernameField.getText();
-                passwordInput = passwordField.getText();
+                String idInput;
+                char[] pwdInput;
+                idInput=idField.getText();
+                pwdInput = pwdField.getText().toCharArray();
                 try {
-                    User tempUser = new User(usernameInput, passwordInput);
+                    User tempUser = new User(idInput, pwdInput);
                     loginSucceed = new UserManagement().loginUser(tempUser);
                     if (loginSucceed) {
                         setVisible(false);
@@ -70,26 +71,26 @@ public class LoginWindow extends JFrame {
         label.setBounds(10, 35, 96, 14);
         contentPane.add(label);
 
-        usernameField = new JTextField();
-        usernameField.setColumns(10);
-        usernameField.setBounds(116, 32, 148, 30);
-        contentPane.add(usernameField);
+        idField = new JTextField();
+        idField.setColumns(10);
+        idField.setBounds(116, 32, 148, 30);
+        contentPane.add(idField);
 
         JLabel label_1 = new JLabel("Password:");
         label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
         label_1.setBounds(10, 80, 89, 14);
         contentPane.add(label_1);
 
-        passwordField = new JPasswordField();
-        passwordField.setColumns(10);
-        passwordField.setBounds(116, 79, 148, 30);
-        contentPane.add(passwordField);
+        pwdField = new JPasswordField();
+        pwdField.setColumns(10);
+        pwdField.setBounds(116, 79, 148, 30);
+        contentPane.add(pwdField);
 
         JButton btnForgotPassword = new JButton("Press if you forgot your password");
         btnForgotPassword.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new ForgotPasswordView();
+//                    new ForgotPasswordView();
                 } catch (Exception e1) {
                    e1.printStackTrace();;
                 }

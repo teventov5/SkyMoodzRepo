@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "User",
+    "description": "A User of the Application",
+    "type": "object",
+    "properties": {
+		"favoritesArr": {
+            "description": "An array for the user favorite cities",
+            "type": "array"
+        },
+        "username": {
+            "description": "Username of the User",
+            "type": "string"
+        },
+        "password": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 8,
+			"pattern": "^(([a-z]+([A-Z])+[0-9]+)+)|(([A-Z])+[a-z]+[0-9]+)+$"			
+        },
+		    "secretQuestion": {
+            "type": "string",
+			 "minLength": 1
+        },
+			"secretAnswer": {
+            "type": "string",
+			"minLength": 1
+
+        }
+    },
+    "required": ["username", "password","secretQuestion","secretAnswer"]
+}

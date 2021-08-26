@@ -1,0 +1,29 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://example.com/user.schema.json",
+    "title": "User",
+    "description": "A User of the Application",
+    "type": "object",
+    "properties": {
+        "id": {
+            "description": "Email address is defined as the User Id of the User",
+            "type": "string"
+        },
+		  "dateOfBirth": {
+            "description": "The user date of birth",
+            "type": "string"
+        },
+		  "name": {
+            "description": "Full name of the app user",
+            "type": "string"
+        },
+        "pwd": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 8,
+			"pattern": "^(([a-z]+([A-Z])+[0-9]+)+)|(([A-Z])+[a-z]+[0-9]+)+$"			
+        }
+    },
+    "required": ["id", "dateOfBirth", "name", "pwd"]
+}
+

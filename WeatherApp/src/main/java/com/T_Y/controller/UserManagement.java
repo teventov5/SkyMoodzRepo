@@ -1,145 +1,113 @@
 package com.T_Y.controller;
 
 import com.T_Y.model.User;
-import com.T_Y.view.*;
-
+import com.T_Y.view.UserCustomizedScreen;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.jsonschema.JsonSchema;
+import org.everit.json.schema.Schema;
+import org.everit.json.schema.ValidationException;
+import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.function.IntPredicate;
-import java.util.regex.Pattern;
 
 public class UserManagement {
-    public final Pattern textPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
-    private FavoriteCitySearch dialog;
-    private DeleteUserFromDbView dialog2;
     private boolean isRealUser = false;
     private JFrame errorMessage;
+    private JSONObject finalJson;
 
     public UserManagement() {
     }
 
-    public boolean isPasswordValid(String value) {
-        return (   containsNumber(value) && (containsLowerCase(value) && containsUpperCase(value)) &&  ((value.length()>3)&& value.length()<9) );
+    private JSONObject usernameCheck(User tempUser) {
 
-    }
+        /**
+         //this function will use the json schema to make sure the user values
+         // are by the system rules (strong password)
+         **/
 
-    private boolean containsLowerCase(String value) {
-        return contains(value, i -> Character.isLetter(i) && Character.isLowerCase(i));
-    }
 
-    private boolean containsUpperCase(String value) {
-        return contains(value, i -> Character.isLetter(i) && Character.isUpperCase(i));
-    }
+        //getting the JSON schema into a JSONObject
+        JSONObject jsonSchema = new JSONObject(
+                new JSONTokener(UserManagement.class.getResourceAsStream("/schema.json")));
 
-    private boolean containsNumber(String value) {
-        return contains(value, Character::isDigit);
-    }
-
-    private boolean contains(String value, IntPredicate predicate) {
-        return value.chars().anyMatch(predicate);
-    }
-
-    private boolean passwordCheck(User tempUser) {
-        String tempPassword = tempUser.getPassword();
-        if (tempPassword.length() > 8 || tempPassword.length() < 4) {
-            JOptionPane.showMessageDialog(null, "Password has to be between 4-8 chars ", "Dialog", JOptionPane.INFORMATION_MESSAGE);
-            return false;
-
-        }
-        if (!isPasswordValid(tempPassword)) {
-            JOptionPane.showMessageDialog(null, "Password has to include at least one digit and one letter ", "Dialog", JOptionPane.INFORMATION_MESSAGE);
-            return false;
-        }
-        return true;
-    }
-
-    public boolean registerUser(User tempUser) throws SQLException, ClassNotFoundException, IOException {
+        //the code in the try section will transform the user into
+        // a string according to Json rules and later into a JSONObject
+        //final step is using the schema to make sure the tempUser Json is legal
+        //if illegal there will be an error thrown to us.
+        //if legal it will just move on with the code.
         try {
-            if(passwordCheck(tempUser))
-            System.out.println("user password meets requirements");
+            ObjectMapper mapper = new ObjectMapper();
+            String tempJsonString = mapper.writeValueAsString(tempUser);
+
+
+//
+//            String jsonFinalString="{";
+//            tempJsonString=tempJsonString.substring(11);//removing id=null
+//            jsonFinalString=jsonFinalString+tempJsonString;
+            System.out.println("ResultingJSONstring = " + tempJsonString);
+
+            JSONObject jsonSubject = new JSONObject(new JSONTokener(tempJsonString));
+
+            Schema schema = SchemaLoader.load(jsonSchema);
+            schema.validate(jsonSubject);
+            return jsonSubject;
+        }
+        catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        catch (ValidationException e2)
+        {
+            //tells the user why he failed
+            System.out.println(e2.getMessage());
+        }
+        return null;
+    }
+
+    public boolean registerUser(User tempUser)  {
+        try {
+            this.finalJson=usernameCheck(tempUser);
+                if(finalJson!=null) {
+                    System.out.println("User meets requirements");
+                }
             else return false;
-            if (new UsersDB().registerUserToDB(tempUser)) {
+            if (new UsersDB().registerUserToDB(finalJson)) {
                 JOptionPane.showMessageDialog(null, "Registration Succeeded", "Dialog", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
 
-            } catch (ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (HeadlessException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    public boolean loginUser(User tempUser) throws SQLException, ClassNotFoundException, IOException {
+    public boolean loginUser(User tempUser)  {
         try {
-            if(new UsersDB().loginUserToDB(tempUser)) {
+            if (new UsersDB().loginUserToDB(tempUser)) {
                 JOptionPane.showMessageDialog(errorMessage, "Login Allowed", "Dialog", JOptionPane.INFORMATION_MESSAGE);
                 new UserCustomizedScreen(tempUser);
                 return true;
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(errorMessage, "Login failed", "Dialog", JOptionPane.ERROR_MESSAGE);
                 //return false comes later
             }
         } catch (Exception e1) {
-           e1.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean loginAdmin(User tempUser) throws SQLException, ClassNotFoundException, IOException {
-        try {
-           boolean loginSuccess= new UsersDB().loginAdminToDB(tempUser);
-           return loginSuccess;
-        }
-        catch (ArithmeticException e1) {
-            e1.printStackTrace();
-            }
-        return false;
-    }
-
-    public String[] showFavorites(User tempUser) {
-        try {
-            try {
-                return (new UsersDB().showUserDbFavorites(tempUser));
-            } catch (Exception e2) {
-               e2.printStackTrace();;
-            }
-        } catch (Exception e1) {
-           e1.printStackTrace();;
-        }
-        throw new ArithmeticException("problem getting favorites");
-    }
-
-    public boolean editFavorites(User tempUser, char index) throws SQLException, ClassNotFoundException, IOException, ArithmeticException {
-        try {
-            dialog = new FavoriteCitySearch(tempUser, index);
-            dialog.setVisible(true);
-        } catch (Exception e1) {
-            return true;
-        }
-        return false;
-    }
-
-    public User resetUserPassword(User tempUser) throws SQLException, ClassNotFoundException, IOException {
-        try {
-            User tempUser2 = new UsersDB().getUserSecretInfo(tempUser);
-            if (tempUser2!=null) {
-                return tempUser2;
-            }
-        } catch (Exception e1) {
             e1.printStackTrace();
         }
-        return null;
+        return false;
     }
+
 
 }
 

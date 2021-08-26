@@ -3,63 +3,58 @@ package com.T_Y.model;
 import com.T_Y.controller.UserManagement;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class User implements Serializable {
-    protected String[] favoritesArr = new String[] { "Empty City Slot", "Empty City Slot", "Empty City Slot", "Empty City Slot", "Empty City Slot", "Empty Slot" };
-    private String username;
-    private String password;
-    private String secretQuestion;
-    private String secretAnswer;
+    private String id;
+    private String name;
+    private char[] pwd;
+    private String dateOfBirth;
 
-    public User(String username, String password, String secretQuestion, String secretAnswer) {
-        this.setUsername(username);
-        this.setPassword(password);
-        this.setSecretQuestion(secretQuestion);
-        this.setSecretAnswer(secretAnswer);
+    public User(String id, String name, char[] pwd, String dateOfBirth) {
+        this.id = id;
+        this.name = name;
+        this.pwd = pwd;
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public User(String username, String password) {
-        this.setUsername(username);
-        this.setPassword(password);
+    public User(String id, char[] pwd) {
+        this.id = id;
+        this.pwd = pwd;
+        this.dateOfBirth = LocalDate.of(1900, 1, 1).toString();
+        this.name="tempName";
     }
 
-    public String getPassword() {
-        return password;
+    public String getId() {
+        return id;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getSecretAnswer() {
-        return secretAnswer;
+    public String getName() {
+        return name;
     }
 
-    public void setSecretAnswer(String secretAnswer) {
-        this.secretAnswer = secretAnswer;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSecretQuestion() {
-        return secretQuestion;
+    public char[] getPwd() {
+        return pwd;
     }
 
-    public void setSecretQuestion(String secretQuestion) {
-        this.secretQuestion = secretQuestion;
+    public void setPwd(char[] pwd) {
+        this.pwd = pwd;
     }
 
-    public String getUsername() {
-        return username;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String[] getFavoritesArr() {
-        return (new UserManagement().showFavorites(this));
-    }
-
-    public void setFavoritesArr(String[] favoritesArr) {
-        this.favoritesArr = favoritesArr;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }
