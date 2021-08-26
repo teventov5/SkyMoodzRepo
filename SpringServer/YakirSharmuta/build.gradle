@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.4.3' // Spring boot, to have embedded web server and RESTful web services
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE' // Spring IO, to work with MySQL
+}
+
+group 'computersecurity'
+version '1.0'
+
+ext {
+    springBootVer = '2.4.3'
+    jjwtVer = '0.11.2'
+    mysqlConnectorVer = '8.0.23'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVer}" // Spring web for RESTful web services
+    implementation "org.springframework.boot:spring-boot-starter-security:${springBootVer}" // Encode passwords and authenticate users
+    implementation "io.jsonwebtoken:jjwt-api:${jjwtVer}" // Working with JWT
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVer}" // Java beans to SQL and vice versa
+    implementation "org.springframework.boot:spring-boot-starter-cache:${springBootVer}"
+    runtimeOnly "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVer}" // Encode passwords and authenticate users
+    runtimeOnly "mysql:mysql-connector-java:${mysqlConnectorVer}" // Working with MySQL
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwtVer}"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwtVer}"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVer}"
+    testImplementation "org.mockito:mockito-junit-jupiter:3.8.0"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+springBoot {
+    mainClass.set('computersecurity.server.ServerMain')
+}
+
+bootJar {
+    mainClass.set('computersecurity.server.ServerMain')
+}
