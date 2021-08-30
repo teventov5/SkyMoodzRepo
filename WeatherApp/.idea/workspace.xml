@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01fcdd18-0afc-4dbf-9578-1abdf3f8e0c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/Example.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/SSLUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringServer/YakirSharmuta/src/main/java/computersecurity/server/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringServer/YakirSharmuta/src/main/java/computersecurity/server/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringServer/.idea/SpringServer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringServer/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringServer/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringServer/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringServer/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringServer/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringServer/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringServer/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringServer/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringServer/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringServer/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringServer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringServer/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringServer/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringServer/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringServer/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WeatherApp.eml" beforeDir="false" afterPath="$PROJECT_DIR$/WeatherApp.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UserManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UserManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UsersDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/T_Y/controller/UsersDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/keystore/ty.p12" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UserManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UserManagement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UsersDB$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UsersDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/T_Y/controller/UsersDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/keystore/ty.p12" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/keystore/ty.p12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/keystore/ty.p12" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SpringServer" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -137,90 +138,19 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="121" y="0" key="#Project_Structure" timestamp="1630076471551">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="121" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1630076471551" />
-    <state x="471" y="196" key="#com.intellij.debugger.actions.ViewTextAction" timestamp="1630073306011">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="471" y="196" key="#com.intellij.debugger.actions.ViewTextAction/0.0.1280.680@0.0.1280.680" timestamp="1630073306011" />
-    <state x="380" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629991182444">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="380" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1629991182444" />
-    <state x="446" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1630074114948">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="446" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1630074114948" />
-    <state x="471" y="51" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1629905914464">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="471" y="51" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1280.680@0.0.1280.680" timestamp="1629905914464" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1630075548048">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1630075548048" />
-    <state width="1237" height="198" key="GridCell.Tab.0.bottom" timestamp="1630169747982">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1630169747982" />
-    <state width="1237" height="198" key="GridCell.Tab.0.center" timestamp="1630169747982">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1630169747982" />
-    <state width="1237" height="198" key="GridCell.Tab.0.left" timestamp="1630169747982">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1630169747982" />
-    <state width="1237" height="198" key="GridCell.Tab.0.right" timestamp="1630169747982">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1630169747982" />
-    <state width="1237" height="198" key="GridCell.Tab.1.bottom" timestamp="1630169747983">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1630169747983" />
-    <state width="1237" height="198" key="GridCell.Tab.1.center" timestamp="1630169747982">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1630169747982" />
-    <state width="1237" height="198" key="GridCell.Tab.1.left" timestamp="1630169747982">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1630169747982" />
-    <state width="1237" height="198" key="GridCell.Tab.1.right" timestamp="1630169747982">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1630169747982" />
-    <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1630075358571">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1630075358571" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1630069832865">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1630069832865" />
-    <state x="174" y="70" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1630159574431">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="174" y="70" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1630159574431" />
-    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1630073821577">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1630073821577" />
-    <state x="91" y="0" key="new project wizard" timestamp="1629288072624">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1629288072624" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1629906328731">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1629906328731" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
