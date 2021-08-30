@@ -2,88 +2,59 @@ package com.T_Y.controller;
 
 import com.T_Y.model.ToServerObject;
 import com.T_Y.model.User;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.json.JSONObject;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
 import javax.swing.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 public class UsersDB {
     private JFrame errorMessage;
     private ToServerObject response;
-    public static TcpClient tcpClient=new TcpClient();
+    public static TcpClient tcpClient = new TcpClient();
 
     public UsersDB() {
     }
 
-    public boolean registerUserToDB(JSONObject jsonUser) throws ClassNotFoundException, SQLException, IOException {
+    public boolean registerUserToDB(JSONObject jsonUser) throws ClassNotFoundException, SQLException, IOException, KeyManagementException, NoSuchAlgorithmException {
 
+        new Example();
 
-        String httpsURL = "https://localhost:8443/user/signup";
+        HttpPut httpPut = new HttpPut("https://localhost:8443/user/signup");
+        httpPut.setHeader("Accept", "application/json");
+        httpPut.setHeader("Content-type", "application/json");
+        StringEntity stringEntity = new StringEntity(jsonUser.toString());
+        httpPut.setEntity(stringEntity);
+        CloseableHttpClient httpclient = HttpClients.createDefault();
 
+        HttpResponse response = httpclient.execute(httpPut);
 
+        BufferedReader br = new BufferedReader(new InputStreamReader((response.getEntity().getContent())));
 
-        URL myurl = new URL(httpsURL);
-        HttpsURLConnection con = (HttpsURLConnection)myurl.openConnection();
-        con.setRequestMethod("POST");
+        //Throw runtime exception if status code isn't 200
+        if (response.getStatusLine().getStatusCode() != 200) {
+            throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
+        }
 
-        con.setRequestProperty("Content-length", String.valueOf(jsonUser.toString().length()));
-        con.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
-        con.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0;Windows98;DigExt)");
-        con.setDoOutput(true);
-        con.setDoInput(true);
+        //Create the StringBuffer object and store the response into it.
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = br.readLine()) != null) {
+            System.out.println("Response : \n" + result.append(line));
+        }
 
-        HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
-            public boolean verify(String hostname, SSLSession session) {
-                return true;
-            }
-        });
-
-        DataOutputStream output = new DataOutputStream(con.getOutputStream());
-
-
-        output.writeBytes(jsonUser.toString());
-
-        output.close();
-
-        DataInputStream input = new DataInputStream( con.getInputStream() );
-
-
-
-        for( int c = input.read(); c != -1; c = input.read() )
-            System.out.print( (char)c );
-        input.close();
-
-        System.out.println("Resp Code:"+con .getResponseCode());
-        System.out.println("Resp Message:"+ con .getResponseMessage());
         return true;
-
-
-
-
-
-//
-//        ToServerObject object=new ToServerObject("Register",tempUser);
-//        response=  tcpClient.sendToServerSql(object);
-//        if (response.getServerResponse().equals("Registration succeeded")) {
-//            return true;
-//        } else if(response.equals("Username already exist")){
-//            JOptionPane.showMessageDialog(errorMessage, "Username already exist", "Dialog", JOptionPane.ERROR_MESSAGE);
-//            return false;
-//        }
-//        else
-//        {
-//            JOptionPane.showMessageDialog(errorMessage, "Registration failed for unknown reason", "Dialog", JOptionPane.ERROR_MESSAGE);
-//            return false;
-//        }
     }
 
     public boolean loginUserToDB(User tempUser) throws ClassNotFoundException, SQLException, ArithmeticException, IOException {
